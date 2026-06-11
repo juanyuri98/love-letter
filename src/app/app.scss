@@ -1,0 +1,263 @@
+
+// Paleta Spotify
+$bg-color: #121212;
+$surface-color: #282828;
+$text-primary: #ffffff;
+$text-secondary: #a7a7a7;
+$brand-green: #1db954;
+$brand-green-hover: #1ed760;
+
+:host {
+  display: block;
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background-color: $bg-color;
+  color: $text-primary;
+  min-height: 100vh;
+}
+
+// 1. Tela de Consentimento
+.consent-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(180deg, rgba(29, 185, 84, 0.2) 0%, $bg-color 100%);
+
+  .consent-content {
+    max-width: 400px;
+    h1 {
+      margin-bottom: 1rem;
+      color: $brand-green;
+    }
+    p {
+      color: $text-secondary;
+      margin-bottom: 2rem;
+      line-height: 1.5;
+    }
+  }
+
+  .btn-spotify {
+    background-color: $brand-green;
+    color: #000;
+    border: none;
+    border-radius: 500px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition:
+      transform 0.2s,
+      background-color 0.2s;
+
+    &:hover {
+      background-color: $brand-green-hover;
+      transform: scale(1.05);
+    }
+  }
+}
+
+// 2. Layout Principal
+.app-container {
+  padding-bottom: 100px; // Espaço para o player fixo
+}
+
+// 3. Mini Player (Fixo no rodapé estilo Spotify)
+.mini-player {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #181818;
+  border-top: 1px solid #282828;
+  display: flex;
+  align-items: center;
+  padding: 10px 16px;
+  z-index: 1000;
+  box-sizing: border-box;
+
+  .cover-art {
+    width: 48px;
+    height: 48px;
+    border-radius: 4px;
+    margin-right: 12px;
+    object-fit: cover;
+  }
+
+  .track-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      font-size: 0.9rem;
+      font-weight: bold;
+      color: $text-primary;
+    }
+    .artist {
+      font-size: 0.8rem;
+      color: $text-secondary;
+    }
+  }
+
+  .play-btn {
+    background: transparent;
+    border: none;
+    color: $text-primary;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 8px;
+  }
+}
+
+// 4. Hero & Contador
+.hero-section {
+  padding: 4rem 1.5rem 2rem;
+  text-align: center;
+  background: linear-gradient(180deg, #2a2a2a 0%, $bg-color 100%);
+
+  .couple-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+  }
+  .subtitle {
+    color: $text-secondary;
+    margin-bottom: 2rem;
+  }
+
+  .counter-panel {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+
+    .time-box {
+      background-color: $surface-color;
+      border-radius: 12px;
+      padding: 15px 10px;
+      min-width: 70px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      span {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: $brand-green;
+      }
+      small {
+        font-size: 0.75rem;
+        color: $text-secondary;
+        margin-top: 4px;
+      }
+
+      &.highlight {
+        border: 1px solid $brand-green;
+      }
+    }
+  }
+}
+
+// 5. Seção de Mensagem
+.message-section {
+  padding: 2rem 1.5rem;
+
+  .card {
+    background-color: $surface-color;
+    border-radius: 16px;
+    padding: 2rem;
+    text-align: center;
+
+    h2 {
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    .love-letter {
+      color: $text-secondary;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      white-space: pre-line;
+    }
+  }
+
+  .highlights-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    .highlight-item {
+      background-color: rgba(255, 255, 255, 0.05);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 1rem;
+      border-left: 3px solid $brand-green;
+    }
+  }
+}
+
+// 6. Galeria de Fotos
+.gallery-section {
+  padding: 2rem 1.5rem;
+
+  h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .gallery-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .photo-card {
+      background-color: $surface-color;
+      border-radius: 12px;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+      .caption {
+        padding: 12px;
+        text-align: center;
+        color: $text-secondary;
+        font-size: 0.9rem;
+      }
+    }
+  }
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  color: $text-secondary;
+  font-size: 0.8rem;
+}
+
+// Responsividade para telas maiores
+@media (min-width: 768px) {
+  .counter-panel {
+    gap: 20px !important;
+  }
+  .time-box {
+    min-width: 90px !important;
+  }
+  .gallery-grid {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .photo-card {
+    width: calc(50% - 1.5rem);
+  }
+}
+
+.star-map-img {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
